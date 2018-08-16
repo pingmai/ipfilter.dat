@@ -16,6 +16,7 @@ parser.add_argument(
     '--debug',
     type=int,
     default=0,
+	choices=range(0, 3),
     help='debug flag'
 )
 parser.add_argument(
