@@ -5,9 +5,13 @@ import sys
 import urllib.request
 import ipaddress
 
+if sys.version_info[0] != 3 or sys.version_info[1] < 3:
+    print("This script requires Python version 3.3 or above")
+    sys.exit(1)
+
 parser = argparse.ArgumentParser(
-    description='''download block list from iblocklist.com
-    convert to cidr addresses.
+    description='''download block lists from iblocklist.com
+    and convert to ipfilter.dat.
     ''',
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
@@ -16,7 +20,7 @@ parser.add_argument(
     '--debug',
     type=int,
     default=0,
-	choices=range(0, 3),
+    choices=range(0, 3),
     help='debug flag'
 )
 parser.add_argument(
