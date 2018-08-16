@@ -1,9 +1,9 @@
 # ipfilter.dat
-Create ipfilter.dat from iblocklist.com.
-Requires python3.3 or above.
-'lists.input' contains all lists from iblocklist.com.
-Run './iblocklist.py' will generate 'ipfilter.dat' silently.
-'-D' will generate debug messages to stderr.
+## Create [ipfilter.dat](https://github.com/pingmai/ipfilter.dat/raw/master/ipfilter.dat) from [iblocklist.com](https://www.iblocklist.com/lists).
+* Requires Python 3.3 or above.
+* 'lists.input' contains all lists from iblocklist.com.
+* Run './iblocklist.py' will generate 'ipfilter.dat' silently.
+* '-D' will generate debug messages to stderr.
 ```
 [2212]ping@porte:~/git/iblocklist$ ./iblocklist.py -h
 usage: iblocklist.py [-h] [-D DEBUG] [-i INFILE] [-o OUTFILE]
