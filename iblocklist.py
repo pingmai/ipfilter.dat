@@ -12,10 +12,17 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
 parser.add_argument(
+    '-D',
+    '--debug',
+    type=int,
+    default=0,
+    help='debug flag'
+)
+parser.add_argument(
     '-i',
     '--infile',
     default='lists.input',
-    help='input file with urls of list of lists'
+    help='input file with urls of lists'
 )
 parser.add_argument(
     '-o',
@@ -25,7 +32,11 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-nets = set()
+def dprint(level, *a, **kwargs):
+    if args.debug >= level:
+        print(*a, file=sys.stderr, **kwargs)
+
+nets = []
 for line in open(args.infile, 'r'):
     url = line.split('#')[0].strip()
     if not url:
@@ -33,25 +44,25 @@ for line in open(args.infile, 'r'):
     try:
         response = urllib.request.urlopen(url)
     except Exception as e:
-        print('%s: ' % url, e)
+        dprint(0,'%s: ' % url, e)
     else:
-        print(url)
+        dprint(1,url)
         for line in gzip.open(response):
             line = line.decode(errors='ignore').strip()
             a = line.rsplit(':',1)
             if len(a) != 2:
-                print('skipped:', line)
+                dprint(2,'skipped:', line)
                 continue
             comment, range = a
             a = range.split('-')
             if len(a) != 2:
-                print('bad ip range:', line)
+                dprint(2,'bad ip range:', line)
                 continue
             start,end = map(ipaddress.IPv4Address, a)
-            nets.update(list(ipaddress.summarize_address_range(start, end)))
+            nets.extend(list(ipaddress.summarize_address_range(start, end)))
 
 outf = open(args.outfile,'w')
-for n in ipaddress.collapse_addresses(nets):
+for n in ipaddress.collapse_addresses(set(nets)):
     print("%s - %s" % (n[0],n[-1]), file=outf)
 
 outf.close()
