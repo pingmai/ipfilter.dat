@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.7
+#!/usr/bin/env python3
 import argparse
 import gzip
 import sys
@@ -51,7 +51,7 @@ for line in open(args.infile, 'r'):
             line = line.decode(errors='ignore').strip()
             a = line.rsplit(':',1)
             if len(a) != 2:
-                dprint(2,'skipped:', line)
+                dprint(2,'skipped line:', line)
                 continue
             comment, range = a
             a = range.split('-')
