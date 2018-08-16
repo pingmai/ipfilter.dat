@@ -1,24 +1,23 @@
 # ipfilter.dat
-## Create [ipfilter.dat](https://github.com/pingmai/ipfilter.dat/raw/master/ipfilter.dat) from [iblocklist.com](https://www.iblocklist.com/lists).
+## Creates [ipfilter.dat](https://github.com/pingmai/ipfilter.dat/raw/master/ipfilter.dat) from [iblocklist.com](https://www.iblocklist.com/lists).
 * Requires Python 3.3 or above.
 * 'lists.input' contains all lists from iblocklist.com.
-* Run './iblocklist.py' will generate 'ipfilter.dat' silently.
-* '-D' will generate debug messages to stderr.
+* Running './iblocklist.py' will generate 'ipfilter.dat' silently.
+* '-D n' will generate debug messages to stderr.
 ```
 [2212]ping@porte:~/git/iblocklist$ ./iblocklist.py -h
-usage: iblocklist.py [-h] [-D DEBUG] [-i INFILE] [-o OUTFILE]
+usage: iblocklist.py [-h] [-D {0,1,2}] [-i INFILE] [-o OUTFILE]
 
 download block list from iblocklist.com convert to cidr addresses.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -D DEBUG, --debug DEBUG
+  -D {0,1,2}, --debug {0,1,2}
                         debug flag (default: 0)
   -i INFILE, --infile INFILE
                         input file with urls of lists (default: lists.input)
   -o OUTFILE, --outfile OUTFILE
-                        output file (def
-
+                        output file (default: ipfilter.dat)
 [2213]ping@porte:~/git/iblocklist$ ./iblocklist.py -D 2
 http://list.iblocklist.com/lists/atma/atma
 skipped line: # List distributed by iblocklist.com
