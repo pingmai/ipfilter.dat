@@ -2,6 +2,7 @@
 ## Creates [ipfilter.dat](https://github.com/pingmai/ipfilter.dat/raw/master/ipfilter.dat) from [iblocklist.com](https://www.iblocklist.com/lists).
 * Requires Python 3.3 or above.
 * 'lists.input' contains all lists from iblocklist.com.
+* combine all lists, remove duplicates, consolidate network addresses
 * Running './iblocklist.py' will generate 'ipfilter.dat' silently.
 * '-D n' will generate debug messages to stderr.
 ```
