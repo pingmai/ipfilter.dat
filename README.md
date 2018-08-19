@@ -134,5 +134,5 @@ skipped line:
 
 To keep the list fresh on windows, create a task in Task Scheduler.  e.g.
 ```
-c:\cygwin64\bin\bash.exe -l -c "$AppData/uTorrent/iblocklist.py -D 2"
+c:\cygwin64\bin\bash.exe -l -c "$APPDATA/uTorrent/iblocklist.py -D 2"
 ```
